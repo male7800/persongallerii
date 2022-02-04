@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Persongalleri</title>
+
+    <style>
+      section {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 10px;
+      }
+      article {
+        border-radius: 10px;
+        border: 4px solid #b86b77;
+        padding: 10px;
+      }
+
+      img {
+        max-width: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="box"></section>
+    <template>
+      <article>
+        <img class="billede" src="" alt="" />
+        <h2 class="fornavn"></h2>
+        <p class="efternavn"></p>
+        <p class="titel"></p>
+        <p class="troende"></p>
+        <p class="fødselsdag"></p>
+      </article>
+    </template>
+  </body>
+</html>

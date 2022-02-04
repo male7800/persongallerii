@@ -13,8 +13,8 @@
         gap: 10px;
       }
       article {
-        border-radius: 10px;
-        border: 4px solid #b86b77;
+        border-radius: 20px;
+        border: 3px solid #000000;
         padding: 10px;
       }
 
@@ -35,5 +35,44 @@
         <p class="fødselsdag"></p>
       </article>
     </template>
+     </template>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", start);
+      function start() {
+        const url = "https://persongalleri-5d3e.restdb.io/rest/persongalleri";
+        hentData(url);
+      }
+
+      const box = document.querySelector(".box");
+      const template = document.querySelector("template");
+
+      const options = {
+        headers: {
+          "x-apikey": "600fe9211346a1524ff12e31",
+        },
+      };
+      async function hentData(url) {
+        const respons = await fetch(url, options);
+        const json = await respons.json();
+        console.log(json);
+        vis(json);
+      }
+
+      function vis(personer) {
+        personer.forEach((person) => {
+          let klon = template.cloneNode(true).content;
+          klon.querySelector(".billede").src = "faces/" + person.billede;
+          klon.querySelector(".fornavn").textContent = person.fornavn;
+          klon.querySelector(".efternavn").textContent = person.efternavn;
+          klon.querySelector(".titel").textContent = person.titel;
+          klon.querySelector(".fødselsdag").textContent = person.fødselsdag;
+
+          box.appendChild(klon);
+        });
+      }
+
+      hentData(url);
+    </script>
   </body>
 </html>
